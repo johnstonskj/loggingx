@@ -1,12 +1,13 @@
 .. _modules:
 
-===============
-Example Modules
-===============
+================
+loggingx Modules
+================
 
 .. toctree::
    :maxdepth: 2
 
    apache
    db
+   trace
    wef

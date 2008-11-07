@@ -1,4 +1,5 @@
-""" Trace functions.
+""" 
+Method-level trace functions.
 """
 
 import inspect, logging, types
@@ -11,12 +12,16 @@ logging.basicConfig()
 _logger = logging.getLogger('root')
 
 def enable(yes):
+    """ Is trace enabled? """
     if yes:
         _logger.setLevel(LVL_TRACE)
     else:
         _logger.setLevel(logging.CRITICAL)
         
 def called():
+    """ Put at the beginning of a method it traces the calling parameters
+        and other details.
+    """
     if _logger.isEnabledFor(LVL_TRACE):
         frame = inspect.currentframe().f_back
         cls = ''
@@ -38,6 +43,9 @@ def called():
         del frame
 
 def returning(value):
+    """ Put at the point of return from a method it traces the response
+        value.
+    """
     if _logger.isEnabledFor(LVL_TRACE):
         frame = inspect.currentframe().f_back
         function = frame.f_code.co_name

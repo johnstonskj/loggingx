@@ -34,12 +34,13 @@ VERSION_WEF_1 = '1.1'
 REPORTER_ID = 'urn:uuid:e0b7f6ae-bc80-11db-990f-0014a4dafba5'
 
 class WEFFormatter(logging.Formatter):
-    """This class implements the standard logging Formatter class and
+    """
+    This class implements the standard logging Formatter class and
     provides a formatting of messages according to the OASIS WEF Event 
     Format. 
     """
     def __init__(self, version=VERSION_WEF_1):
-        """ WEFFormatter()
+        """ 
         Initializes the formatter, note that it is not possible to reset
         the format string as in the base class, to format a WEF the shape
         must be conformed to.
@@ -48,7 +49,9 @@ class WEFFormatter(logging.Formatter):
         self.version = version
 
     def _extendedElement(self, doc, name, value, children={}):
-        """ Add extended data elements. """
+        """ 
+        Add extended data elements. 
+        """
         doc.startElement('extendedDataElements',
                          {'name': name,
                           'type': _type_map[type(value)]})
@@ -66,7 +69,9 @@ class WEFFormatter(logging.Formatter):
         doc.endElement('extendedDataElements')
 
     def _exception(self, doc, exc_info):
-        """ Format an exception record, this adds extended data elements. """
+        """ 
+        Format an exception record, this adds extended data elements. 
+        """
         if isinstance(exc_info[0], type('')):
             tbl = exc_info[2]
             exc_name = exc_info[0]
@@ -83,7 +88,7 @@ class WEFFormatter(logging.Formatter):
                                'Traceback': tbs})
 
     def format(self, record):
-        """ format(record) -> str
+        """ 
         Format a log record as a WEF and return as a string.
         """
         # Note that the standard formatTime() only gives us time zones as 
@@ -158,5 +163,7 @@ class WEFFormatter(logging.Formatter):
         return xml
         
     def formatException(self, exc_info):
-        """ We ignore this. """
+        """ 
+        We ignore this. 
+        """
         pass

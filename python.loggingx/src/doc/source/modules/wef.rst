@@ -3,9 +3,10 @@
 
 .. automodule:: loggingx.wef
 
-Module Contents
----------------
+Classes
+-------
 
-.. autoclass:: loggingx.wef.WEFFormatter
+.. autoclass:: WEFFormatter
    :members:
+
 

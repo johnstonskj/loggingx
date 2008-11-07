@@ -9,15 +9,11 @@ Classes:
    DatabaseHandler - The logging handler itself.
 """
 
-import logging, os, os.path, traceback
+import logging, os, os.path, tempfile, traceback
 import cPickle
 
 # The default database identifier for SQLite3
-DEF_DB = '/tmp'
-try:
-    DEF_DB = os.path.join(os.environ['TMP'], 'pylogging.db')
-except KeyError:
-    DEF_DB = os.path.join(os.environ.get('TEMP', '/temp'), 'pylogging.db')
+DEF_DB = os.path.join(tempfile.gettempdir(), 'pylogging.db')
 
 # The default table name.
 DEF_TABLE_NAME = 'python_logger'
